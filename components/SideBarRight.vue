@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer app color="white" right width="290">
+  <v-navigation-drawer v-model="drawer" app color="white" right width="290">
       <v-list subheader two-line class="mt-1">
           <v-list-item>
               <v-list-item-avatar rounded>
@@ -20,7 +20,7 @@
       <v-list subheader two-line class="mt-1">
           <v-list-item>
               <v-list-item-avatar rounded color="grey lighten-4">
-                  <v-img src="2.png"></v-img>
+                  <v-img :src="require('~/assets/images/2.png')"></v-img>
               </v-list-item-avatar>
               <v-list-item-content>
                   <v-list-item-title class="subtitle-2">Caramel Frappuccino</v-list-item-title>
@@ -37,7 +37,7 @@
       <v-list subheader two-line class="mt-1">
           <v-list-item>
               <v-list-item-avatar rounded color="grey lighten-4">
-                  <v-img src="3.png"></v-img>
+                  <v-img :src="require('~/assets/images/3.png')"></v-img>
               </v-list-item-avatar>
               <v-list-item-content>
                   <v-list-item-title class="subtitle-2">Chocolate Frappuccino</v-list-item-title>
@@ -54,7 +54,7 @@
       <v-list subheader two-line class="mt-1">
           <v-list-item>
               <v-list-item-avatar rounded color="grey lighten-4">
-                  <v-img src="4.png"></v-img>
+                  <v-img :src="require('~/assets/images/4.png')"></v-img>
               </v-list-item-avatar>
               <v-list-item-content>
                   <v-list-item-title class="subtitle-2">Peppermint Macchiato</v-list-item-title>
@@ -78,7 +78,7 @@
       <v-toolbar color="rgba(0,0,0,0)" flat>
           <strong>Total</strong><v-spacer></v-spacer><strong>$20.141</strong>
       </v-toolbar>
-      <strong class="ml-5">Payment Method</strong>
+      <strong class="ml-5 mb-4">Payment Method</strong>
       <v-item-group mandatory class="mt-n1">
           <v-container>
               <v-row justify="center">
@@ -148,11 +148,30 @@
       <div class="mx-3 mt-2">
           <v-btn color="#1ab394" block dark class="widthoutupercase">Print Bills</v-btn>
       </div>
+      <div class="mx-3 mt-2" absolute bottom >
+          <v-btn color="#1ab394" block dark class="widthoutupercase" @click="closeDrawer">Close</v-btn>
+      </div>
   </v-navigation-drawer>
 </template>
 
 <script>
 export default {
+    props:['open'],
+    computed:{
+        drawer:{
+          get(){
+            return this.open
+          },
+          set(val){
+            this.$emit('callback', val)
+          }
+        }
+    },
+    methods:{
+        closeDrawer(){
+            this.drawer = false;
+        }
+    }
 
 }
 </script>

@@ -3,7 +3,19 @@
     <v-main>
       <SideBar />
       <Nuxt />
-      <SideBarRight />
+      <SideBarRight :open="rightDrawer" @callback="SideBarRightCallBack"/>
+      <v-btn
+        color="success"
+        fab
+        dark
+        fixed
+        bottom
+        right
+        transition
+        @click="rightDrawer = ! rightDrawer"
+      >
+        <v-icon>fas fa-shopping-cart</v-icon>
+      </v-btn>
     </v-main>
   </v-app>
 </template>
@@ -37,5 +49,20 @@ export default {
       title: 'Vuetify.js',
     }
   },
+  methods:{
+    SideBarRightCallBack(data){
+      this.rightDrawer = data
+    }
+  }
 }
 </script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
+* {
+  font-family: 'Noto Sans TC', sans-serif;
+}
+a {
+  text-decoration: none;
+}
+</style>
