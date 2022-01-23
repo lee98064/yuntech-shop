@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="drawer" app color="white" mini-variant mini-variant-width="90">
+  <v-navigation-drawer v-model="drawer" app color="white" mini-variant mini-variant-width="90" fill-height fluid>
       <v-avatar class="d-block text-center mx-auto mt-4" size="40">
           <img :src="require('~/static/logo.png')" alt="">
           <!-- <v-icon color="#1ab394">fas fa-coffee</v-icon> -->
@@ -50,22 +50,37 @@
 <script>
 export default {
     name: 'SideBar',
+    props:['open'],
     data: () => ({
         selectedItem: 0,
-        drawer: null,
         items: [
             {icon: 'fas fa-home', text:'首頁', path:'/'},
             {icon: 'fas fa-hamburger', text:'分類', path:'/category'},
             {icon: 'fas fa-history', text:'購買紀錄', path:'/history'},
-            {icon: 'fas fa-wallet', text:'我的賣場', path:'/user/store'},
+            {icon: 'fas fa-wallet', text:'我的賣場', path:'/user/dashboard'},
             // {icon: 'fas fa-percent', text:'Promo', path:''},
             // {icon: 'fas fa-cog', text:'Setting', path:''},
         ],
-    })
+    }),
+    computed:{
+        drawer:{
+          get(){
+            return this.open
+          },
+          set(val){
+            this.$emit('callback', val)
+          }
+        }
+    },
+    methods:{
+        closeDrawer(){
+            this.drawer = false;
+        }
+    }
 }
 </script>
 
-<style>
+<style scoped>
 .border {
     margin-left: 8px;
     margin-right: 8px;

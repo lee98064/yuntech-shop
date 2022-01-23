@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="drawer" app color="white" right width="290">
+  <v-navigation-drawer v-model="drawer" app color="white" right width="290" fill-height fluid>
       <v-list subheader two-line class="mt-1">
           <v-list-item>
               <v-list-item-avatar rounded>
@@ -148,7 +148,7 @@
       <div class="mx-3 mt-2">
           <v-btn color="#1ab394" block dark class="widthoutupercase">Print Bills</v-btn>
       </div>
-      <div class="mx-3 mt-2" absolute bottom >
+      <div class="mx-3 mt-2">
           <v-btn color="#1ab394" block dark class="widthoutupercase" @click="closeDrawer">Close</v-btn>
       </div>
   </v-navigation-drawer>
