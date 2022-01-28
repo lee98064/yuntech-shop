@@ -132,16 +132,17 @@
               >加入購物車</v-btn
             >
           </v-card-actions>
-        </v-card> -->
-      </v-col>
+        </v-card>
+      </v-col> -->
     </v-row>
   </v-container>
 </template>
 
 <script>
+import Product from '~/components/Product.vue';
 export default {
   name: 'Home',
-  components:['Product'],
+  components:{ Product },
   data() {
     return {
       salers: [
